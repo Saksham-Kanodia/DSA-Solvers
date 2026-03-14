@@ -1,0 +1,7 @@
+Phase 1 (The Basics): Hands-On Machine Learning (Chapters 1-9).
+
+Phase 2 (The Deep Logic): Deep Learning with Python OR Deep Learning from Scratch.
+
+Phase 3 (The System): Designing Machine Learning Systems (Chip Huyen).
+
+Phase 4 (State of the Art): Build an LLM from Scratch (Sebastian Raschka).
