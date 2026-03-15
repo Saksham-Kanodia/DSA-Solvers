@@ -8,6 +8,17 @@ void selectionSort(vector <int> &arr){
     for(int i=0; i<n; i++){
         //Take the current 
         int min_idx = i;
+
+        //look for minimum elemnt in unsorted part.
+        for(int j=i+1; j<n; j++){
+
+            //update the minimum index.
+            if(arr[j]<arr[min_idx])
+            min_idx=j;
+        }
+
+        //swap current element and min_index element.
+        swap(arr[i],arr[min_idx]);
     }
 }
 
@@ -24,7 +35,9 @@ int main(){
     cout << "Original Array: ";
     printArray(arr);
 
-    cout << "Sorted Array: ";
+    selectionSort(arr);
+
+    cout << "\nSorted Array: ";
     printArray(arr);
 
 }
