@@ -40,4 +40,5 @@ int main(){
     cout << "\nSorted Array: ";
     printArray(arr);
 
+    return 0;
 }
