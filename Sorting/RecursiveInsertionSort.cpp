@@ -6,6 +6,7 @@ using namespace std;
 void recursiveInsertionSort(vector <int> &arr, int n){
     if(n<=1) return; //base case if array size get to 1, it is sorted so return.
     
+    //insert last element in its correct position.
     recursiveInsertionSort(arr,n-1);
 
     int key = arr[n-1];
