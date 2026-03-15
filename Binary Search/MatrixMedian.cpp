@@ -36,6 +36,7 @@ At each step, we compute the number of elements less than or equal to the curren
 => Otherwise, we search in the lower half to reduce it*/
 
 //Time Complexity:- O(n*log(MaxElement))
+//Space Complexity:- O(1)
 int countLessEqual(vector <vector<int>> &mat, int mid){
     int count=0;
     int n= mat.size();
