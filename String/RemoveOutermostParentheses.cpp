@@ -8,7 +8,7 @@ building- don't count the door( '(' ). While you are inside (Depth 1 or higher),
 When you take the last step back to the ground, don't count the exit( ')' ).*/
 
 /*Time Complexity:- O(N). As we are travesing entire strings, so O(N) where N is no. of elements of string.*/
-/*Space Complexity:- O(N). As we are using extra space for the string.*/
+/*Space Complexity:- O(N). Only to return the answer.*/
 
 string removeOuterParentheses(string S){
     string result = "";
