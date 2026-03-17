@@ -24,26 +24,41 @@ void reverseRange(string &s, int i, int j){
 string reverseWords(string s){
     
     int n= s.length();
+    int left =0;
+    int right = n-1;
 
-    //reverse the entire sentence
-    reverseRange(s,0,n-1);
+    while(left<right && s[left]==' ') left++;
+    while(left<right && s[right]==' ') right--;
 
-    //re-reverse the individual words
+    //declare cleanStr and clean it up.
+    string cleanStr = "";
+    for(int i=left; i<=right; i++){
+        if(s[i]!=' ')
+            cleanStr+=s[i];
+        else if(cleanStr.back()!=' ')
+        cleanStr +=' ';
+    }
+
+    //now reverse cleanStr;
+    int m=cleanStr.length();
+    reverseRange(cleanStr,0,m-1);
+
+    //reverse individual words now
     int start=0;
-    for(int end=0; end<=n; end++){
-        //if we hit a space or end of string, we've found a word boundary.
-        if(end==n || s[end]==' '){
-            reverseRange(s,start,end-1);
-            start = end+1;//move start to beginning of next word.
+    for(int end=0; end<=m; end++){
+        if(end==m||cleanStr[end]==' '){
+            reverseRange(cleanStr,start, end-1);
+            start=end+1;
         }
     }
 
-    return s;
+    return cleanStr;
+    
 }
 
 int main(){
 
-    string s = "the sky is blue";
+    string s = "  the  sky  is blue  ";
     cout << reverseWords(s) <<endl;
 
     return 0;
