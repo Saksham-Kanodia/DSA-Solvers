@@ -56,8 +56,8 @@ string largestOddNumber2(string s){
 int main(){
 
     string S = "12345";
-    cout << largestOddNumber(S)<<endl;
-    cout << largestOddNumber2(S)<<endl;
+    cout << largestOddNumber(S)<<endl;//calling brute force
+    cout << largestOddNumber2(S)<<endl;//calling optimal solution.
 
     return 0;
 }
