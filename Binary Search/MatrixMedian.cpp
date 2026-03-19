@@ -35,6 +35,9 @@ At each step, we compute the number of elements less than or equal to the curren
 => If this count is less than or equal to (n * m) / 2, we search in the upper half of the range to increase the candidate value.
 => Otherwise, we search in the lower half to reduce it*/
 
+/*We do not need to worry whether that element is present in the matrix or not, cuz if it is present and is not right median there will be 
+smaller median. (Just dont worry about it being present in search space.)*/
+
 //Time Complexity:- O(n*log(MaxElement))
 //Space Complexity:- O(1)
 int countLessEqual(vector <vector<int>> &mat, int mid){
