@@ -20,6 +20,7 @@ string LongestCommonPrefix(vector <string> str){
     int idx=0;
     int k = min(str[0].length(),str[n-1].length());
     for(int i=0; i<k; i++){
+        
         if(str[0][i]==str[n-1][i]){
             idx++;
         }
