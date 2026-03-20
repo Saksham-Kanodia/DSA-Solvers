@@ -49,7 +49,8 @@ string sortByFreq(string s){
 
 /*Optimal Solution:- Using hashmap and Custom Sorting. This a hashing approach where we
 create first a hashmap and store the value of each char of string against its frequency. Then we will append
-hashmap values, to the pair vector and then sort this vector and then create our answer string.*/
+hashmap values, to the pair vector and then sort this vector and then create our answer string(by using string(count,char)) 
+otherwise pair.second will only append once and we want it freq times.*/
 
 //Time Complexity:- O(n). To count frequency. Sort of at max 26 alphabets in constant time only
 //Space Complexity:- O(1). As only 26 lowercase english alphabets so constant space only.
@@ -60,11 +61,7 @@ string sortByFreq2(string s){
 
     unordered_map <char,int> mpp;
     for(int i=0; i<n; i++){
-        char ch= s[i];
-        if(mpp.find(ch)!=mpp.end())
-        mpp[ch]+=1;
-        else
-        mpp[ch]=1;
+        mpp[s[i]]+=1;
     }
 
     vector <pair<int,char>> vp;
@@ -76,7 +73,7 @@ string sortByFreq2(string s){
 
     string ans ="";
     for(auto& pair:vp){
-        ans+=pair.second;
+        ans+=string(pair.first,pair.second);
     }
 
     return ans;
@@ -86,6 +83,6 @@ string sortByFreq2(string s){
 int main(){
 
     string s = "geeksforgeeks";
-    cout << sortByFreq(s);
+    cout << sortByFreq2(s);
     return 0;
 }
