@@ -3,6 +3,11 @@
 #include <unordered_map>
 using namespace std;
 
+/*Logic:- For all substrings calculate beauty and add them. Return this beauty Sum.*/
+
+
+//Time Complexity:- O(n^2).
+//Space Complexity:- O(1).as constant extra space only.
 int beautySum(string s){
     int n=s.length();
     int beautySum=0;
