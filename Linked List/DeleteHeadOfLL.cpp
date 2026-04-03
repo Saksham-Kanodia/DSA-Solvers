@@ -34,6 +34,8 @@ Node* convertArr2LL(vector <int> &arr){
 }
 
 Node* deleteHeadOfLL(Node* head){
+    if(head == NULL) return head;
+
     Node* temp = head;
     head= head-> next;
     delete temp;
