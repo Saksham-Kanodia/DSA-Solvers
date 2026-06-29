@@ -10,7 +10,6 @@
  */
 class Solution {
 public:
-
 ListNode* reverseLL(ListNode* temp){
     ListNode* t = temp;
     ListNode* prev = NULL;
@@ -19,41 +18,42 @@ ListNode* reverseLL(ListNode* temp){
         ListNode* front = t-> next;
         t->next = prev;
         prev = t;
-        t= front;
+        t = front;
     }
+
     return prev;
 }
-
 ListNode* findKthNode(ListNode* temp, int k){
     k-=1;
-    while(temp!=NULL && k>0){
+    while(k>0 && temp!=NULL){
         k-=1;
-        temp= temp->next;
+        temp = temp->next;
     }
     return temp;
 }
     ListNode* reverseKGroup(ListNode* head, int k) {
-        ListNode* temp = head; 
-        ListNode* nextNode; ListNode* prevNode= NULL;
+        ListNode* temp = head;
+        ListNode* nextNode;
+        ListNode* prevNode = NULL;
 
         while(temp!=NULL){
             ListNode* KthNode = findKthNode(temp,k);
 
             if(KthNode==NULL){
-                if(prevNode) prevNode->next = temp;
+                if(prevNode) prevNode-> next = temp;
                 break;
             }
 
-            nextNode = KthNode-> next;
+            nextNode=  KthNode-> next;
             KthNode->next = NULL;
-            KthNode = reverseLL(temp);
+            KthNode= reverseLL(temp);
 
             if(temp==head) head = KthNode;
-            else prevNode->next =KthNode;
+            else prevNode-> next = KthNode;
 
             prevNode = temp;
             temp = nextNode;
         }
-        return head;      
+        return head;
     }
 };
