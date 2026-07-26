@@ -42,9 +42,59 @@ Node* deleteHeadOfLL(Node* head){
     return head;
 }
 
+Node* deleteTailOfLL(Node* head){
+    if(head == nullptr || head-> next == nullptr){
+        delete head;
+        return NULL;
+    }
+
+    Node* temp = head;
+    while(temp-> next -> next !=nullptr)
+    temp = temp->next;
+
+    delete temp->next;
+    temp->next=nullptr;
+
+    return head;
+
+}
+
+Node* deleteKthElementOfLL(Node* head, int k){
+
+    if(head==NULL) return NULL;
+
+    if(k==1){
+        Node* temp = head;
+        head = head-> next;
+        delete temp;
+        return head;
+    }
+
+
+    Node* temp = head;
+    int cnt =1;
+    Node* prev;
+
+    while(cnt!=k){
+        prev = temp;
+        temp = temp->next;
+        cnt++;
+    }
+
+    prev->next = temp->next;
+    delete temp;
+
+    return head;
+}
+
 int main(){
     vector <int> arr = {3,1,5,6,7};
-    cout << deleteHeadOfLL(convertArr2LL(arr))-> data;
-    
+    Node* mover = deleteKthElementOfLL(convertArr2LL(arr),3);
+
+    while(mover!=nullptr){
+        cout << mover->data << " ";
+        mover = mover->next;
+    }
+
     return 0;
 }

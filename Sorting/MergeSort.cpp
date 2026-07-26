@@ -1,66 +1,73 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+# include <iostream>
+# include <vector>
 using namespace std;
 
-//TIME Complexities:- O(n*logn)
-//Space Complexity:- O(1)
+void merge(vector <int> &arr, int low, int mid , int high){
 
-void merge(vector <int> &arr, int low, int mid, int high){
     vector <int> temp;
-    int n1 = mid;
-    int n2 = high;
+    int left = low;
+    int right = mid+1;
 
-    int i=low;
-    int j=mid+1;
-
-    while(i<=n1 && j<=n2){
-        if(arr[i]<arr[j])
-        temp.push_back(arr[i++]);
-        else 
-        temp.push_back(arr[j++]);
-    } 
-
-    while(i<=n1)
-    temp.push_back(arr[i++]);
-
-    while(j<=n2)
-    temp.push_back(arr[j++]);
-
-    //copy these elements back into original array
-    for(int i=low; i<=high; i++){
-        arr[i]=temp[i-low];
+    while(left<=mid && right <= high){
+        if(arr[left] < arr[right]){
+            temp.push_back(arr[left]);
+            left++;
+        }
+        else if(arr[left]>arr[right]){
+            temp.push_back(arr[right]);
+            right++;
+        }
+        else{
+            temp.push_back(arr[left]);
+            temp.push_back(arr[right]);
+            left++; right++;
+        }
     }
+
+    while(left<=mid){
+        temp.push_back(arr[left]);
+        left++;
+    }
+
+    while(right<=high){
+        temp.push_back(arr[right]);
+        right++;
+    }
+
+    for(int i=low; i<=high; i++){
+        arr[i] = temp[i-low];
+    }//explanation: i-low is used to get index of temp array as temp array starts from 0 index and not low index.
 
 }
 
 void mergeSort(vector <int> &arr, int low, int high){
-    if(low>=high) return;
+    if(low == high) return;
 
-    int mid = low + (high-low)/2;
-    mergeSort(arr,low,mid);
-    mergeSort(arr,mid+1,high);
+    int mid = (low+high)/2;
+
+    mergeSort(arr, low, mid);
+    mergeSort(arr, mid+1, high);
+
     merge(arr,low,mid,high);
 }
 
 void printArray(vector <int> &arr){
-    for(int val:arr){
-        cout << val << " ";
+    for(int i=0; i<arr.size(); i++){
+        cout << arr[i] <<" ";
     }
 }
 
-
 int main(){
-    vector <int> arr = {64,25,12,22,11};
-    int n=arr.size();
+
+    vector <int> arr = {3,1,2,4,1,5,2,6,4};
 
     cout << "Original Array: ";
     printArray(arr);
 
-    mergeSort(arr,0,n-1);
-
-    cout << "\nSorted Array: ";
+    cout << "New Array after Merge Sort: ";
+    mergeSort(arr, 0, arr.size()-1);
     printArray(arr);
+
 
     return 0;
 }
