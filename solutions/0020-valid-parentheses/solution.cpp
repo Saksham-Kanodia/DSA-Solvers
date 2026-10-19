@@ -1,37 +1,30 @@
 class Solution {
 public:
-
-bool checkMatchingPair(char ch1,char ch2){
-
-    return ((ch1=='(' && ch2==')') || 
-            (ch1=='[' && ch2==']') ||
-            (ch1=='{' && ch2=='}'));
-}
     bool isValid(string s) {
-        stack <char> st;
         
-        for(int i=0; s[i]!='\0'; i++){
+        stack <char> st;
 
-            char ch = s[i];
+        for(char c:s){
 
-            if(ch=='('|| ch == '[' || ch== '{'){
-                st.push(ch);
+            if(c== '{' || c== '(' || c== '['){
+                st.push(c);
             }
-            else{
-                if(st.empty()){
-                    return false;
-                }
 
-                if(!checkMatchingPair(st.top(),ch))
-                        return false;
+            else{
+
+                if(st.empty()) return false;
+
+                if(c==')' && st.top()== '('||
+                   c=='}' && st.top()== '{'||
+                   c==']' && st.top()== '[')
+                   st.pop();
 
                 else
-                st.pop();
+                return false;
             }
         }
 
-        if(!st.empty())
-        return false;
+        if(!st.empty()) return false;
 
         return true;
     }
