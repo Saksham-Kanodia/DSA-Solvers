@@ -1,25 +1,24 @@
 class Solution {
 public:
 
-bool isOperator(string ch){
-    return (ch == "+"|| ch == "-"|| ch == "*"|| ch == "/");
+bool isOperator(string s){
+    return (s == "+" || s == "-" ||s == "*" ||s == "/");
 }
     int evalRPN(vector<string>& tokens) {
+
         stack <int> st;
 
         for(string s:tokens){
-
-            if(!isOperator(s)){
-                st.push(stoi(s));
-            }
+            if(!isOperator(s))
+            st.push(stoi(s));
 
             else{
 
-            char ch = s[0];
-                    
+                char ch = s[0];
+
             int b = st.top();
             st.pop();
-            int a = st.top();
+            int a= st.top();
             st.pop();
 
             if(ch == '+'){
@@ -34,17 +33,15 @@ bool isOperator(string ch){
                 st.push(a*b);
             }
 
-            else if(ch== '/'){
+            else if(ch == '/'){
 
                 if(b!=0)
                 st.push(a/b);
-
             }
-
             }
         }
 
-        return st.top();
 
+        return st.top();
     }
 };
