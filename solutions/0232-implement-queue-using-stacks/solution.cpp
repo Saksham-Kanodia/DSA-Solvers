@@ -1,8 +1,10 @@
 class MyQueue {
-
-    stack <int> s1,s2;
 public:
+
+stack <int> s1, s2;
+
     MyQueue() {
+        
     }
     
     void push(int x) {
@@ -20,26 +22,17 @@ public:
     }
     
     int pop() {
-        if(s1.empty())
-        return -1;
-
         int val = s1.top();
-
         s1.pop();
         return val;
-
     }
     
     int peek() {
-
-        if(s1.empty())
-        return -1;
-
         return s1.top();
     }
     
     bool empty() {
-        return s1.empty();
+        return (s1.empty());
     }
 };
 
